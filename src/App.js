@@ -46,7 +46,7 @@ const Portfolio = () => {
         "collaborating with qa and devops teams for robust regression testing",
         "contributing to enterprise-level financial planning and analytics software"
       ],
-      logo: "https://via.placeholder.com/80x80/1e40af/ffffff?text=OS",
+      logo: "/logos/onestream.png",
       color: "from-blue-600 to-indigo-600"
     },
     {
@@ -58,19 +58,19 @@ const Portfolio = () => {
         "teaching backend concepts to 70+ students including distributed systems and api design",
         "improved score app data retrieval speed by 300% through graphql and mongodb optimization"
       ],
-      logo: "https://via.placeholder.com/80x80/dc2626/ffffff?text=CAD",
+      logo: "/logos/appdev.png",
       color: "from-red-600 to-rose-600"
     },
     {
       title: "software development intern",
-      company: "astrodoc",
+      company: "stealth startup",
       period: "oct 2024 - may 2025",
       description: [
-        "building next-gen healthcare super app with 15-person cross-functional team",
-        "developing features across flask backend and react native frontend",
-        "helping scale platform to 300+ subscriptions across 25+ states"
+        "building next-gen healthcare super app",
+        "developing features",
+        "helping scale platform"
       ],
-      logo: "https://via.placeholder.com/80x80/059669/ffffff?text=AD",
+      logo: "/logos/stealth-startup.jpeg",
       color: "from-emerald-600 to-teal-600"
     },
     {
@@ -81,7 +81,7 @@ const Portfolio = () => {
         "supporting 150+ students in analysis of algorithms course",
         "conducting office hours, grading, and exam review sessions"
       ],
-      logo: "https://via.placeholder.com/80x80/7c3aed/ffffff?text=CU",
+      logo: "/logos/cornell.png",
       color: "from-purple-600 to-violet-600"
     }
   ];
@@ -91,7 +91,7 @@ const Portfolio = () => {
       name: "eatery",
       tech: ["python", "django", "postgresql", "digitalocean"],
       description: "cross-platform dining app with 10,000+ monthly active users. refactored core systems for improved scalability and security.",
-      image: "https://via.placeholder.com/400x250/3b82f6/ffffff?text=eatery",
+      image: "/logos/eatery.png",
       gradient: "from-blue-500 to-indigo-600",
       stats: { users: "10k+", platforms: 2, rating: "4.8" }
     },
@@ -99,7 +99,7 @@ const Portfolio = () => {
       name: "métissé",
       tech: ["python", "numpy", "sqlite", "tkinter"],
       description: "full-stack stock recommendation engine using real-time market data. implemented portfolio modeling with multidimensional vectors.",
-      image: "https://via.placeholder.com/400x250/10b981/ffffff?text=metisse",
+      image: "/logos/score.png",
       gradient: "from-emerald-500 to-teal-600",
       stats: { stocks: "500+", accuracy: "87%", apis: 3 }
     },
@@ -107,7 +107,7 @@ const Portfolio = () => {
       name: "snail survival",
       tech: ["javascript", "html", "css", "chrome api"],
       description: "chrome extension game with 100+ weekly active users across 40+ countries. designed dynamic gameplay and difficulty adjustment.",
-      image: "https://via.placeholder.com/400x250/f59e0b/ffffff?text=snail",
+      image: "/logos/snail-survival.png",
       gradient: "from-amber-500 to-orange-600",
       stats: { players: "100+", countries: 40, levels: 15 }
     }
@@ -153,7 +153,7 @@ const Portfolio = () => {
             
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-8">
-              {['home', 'about', 'experience', 'projects', 'contact'].map((item) => (
+              {['home', 'about', 'projects', 'experience', 'contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
@@ -213,7 +213,7 @@ const Portfolio = () => {
                 className="w-full h-full rounded-full object-cover bg-white"
               />
             </div>
-            <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full border-4 border-white"></div>
+            <div className="absolute -bottom-1 -right-1 w-9 h-9 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full border-4 border-white"></div>
           </div>
           
           <h1 className="text-4xl md:text-5xl font-extralight tracking-tight mb-4 text-gray-900">
@@ -343,19 +343,19 @@ const Portfolio = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <div key={index} 
-                   className="group relative overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-2xl transition-all duration-500"
-                   onMouseEnter={() => setHoveredProject(index)}
-                   onMouseLeave={() => setHoveredProject(null)}>
-                <div className="relative h-48 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50">
-                  <img 
-                    src={project.image} 
-                    alt={project.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className={`absolute inset-0 bg-gradient-to-t ${project.gradient} opacity-60 group-hover:opacity-40 transition-opacity duration-500`}></div>
-                </div>
+                className="group relative overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-2xl transition-all duration-500"
+                onMouseEnter={() => setHoveredProject(index)}
+                onMouseLeave={() => setHoveredProject(null)}>
+              <div className={`relative h-56 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50 ${project.name === "snail survival" ? "" : "pt-4 pb-2"}`}>
+                <img 
+                  src={project.image} 
+                  alt={project.name}
+                  className={`w-full h-full transition-transform duration-700 group-hover:scale-110 ${project.name === "snail survival" ? "object-cover" : "object-contain"}`}
+                />
+                <div className={`absolute inset-0 bg-gradient-to-t ${project.gradient} opacity-10 group-hover:opacity-5 transition-opacity duration-500 mix-blend-overlay`}></div>
+              </div>
                 
-                <div className="p-6 space-y-4">
+                <div className="p-6 space-y-4 h-64 flex flex-col">
                   <div className="flex items-center justify-between">
                     <h3 className="text-lg font-light text-gray-900">{project.name}</h3>
                     <ArrowUpRight size={16} className="text-gray-400 group-hover:text-violet-600 transition-colors duration-300" />
