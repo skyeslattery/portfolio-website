@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Github, Mail, Phone, MapPin, Code, Briefcase, GraduationCap, ChevronDown, Menu, X } from 'lucide-react';
+import { Github, Mail, Phone, MapPin, Code2, Briefcase, GraduationCap, ChevronDown, Menu, X, ArrowUpRight, Linkedin, Terminal, Database, Cloud, GitBranch, Box, Cpu } from 'lucide-react';
 
 const Portfolio = () => {
   const [scrollY, setScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [hoveredProject, setHoveredProject] = useState(null);
+  const [hoveredExp, setHoveredExp] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
       
-      // Update active section based on scroll position
       const sections = ['home', 'about', 'experience', 'projects', 'contact'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
@@ -37,94 +38,129 @@ const Portfolio = () => {
 
   const experiences = [
     {
-      title: "Software Engineering Intern",
-      company: "OneStream Software",
-      period: "May 2025 - Aug 2025",
+      title: "software engineering intern",
+      company: "onestream software",
+      period: "may 2025 - aug 2025",
       description: [
-        "Transformed Postman-based API workflows into scalable RestSharp test suite using C#",
-        "Collaborated with QA and DevOps teams for robust regression testing",
-        "Contributed to enterprise-level financial planning and analytics software"
-      ]
+        "transforming postman-based api workflows into scalable restsharp test suite using c#",
+        "collaborating with qa and devops teams for robust regression testing",
+        "contributing to enterprise-level financial planning and analytics software"
+      ],
+      logo: "https://via.placeholder.com/80x80/1e40af/ffffff?text=OS",
+      color: "from-blue-600 to-indigo-600"
     },
     {
-      title: "Backend Developer",
-      company: "Cornell App Development",
-      period: "Sep 2024 - Present",
+      title: "backend developer",
+      company: "cornell app development",
+      period: "sep 2024 - present",
       description: [
-        "Lead backend development for apps used by 50%+ of Cornell undergraduates",
-        "Teach backend concepts to 70+ students including distributed systems and API design",
-        "Improved Score app data retrieval speed by 300% through GraphQL and MongoDB optimization"
-      ]
+        "leading backend development for apps used by 50%+ of cornell undergraduates",
+        "teaching backend concepts to 70+ students including distributed systems and api design",
+        "improved score app data retrieval speed by 300% through graphql and mongodb optimization"
+      ],
+      logo: "https://via.placeholder.com/80x80/dc2626/ffffff?text=CAD",
+      color: "from-red-600 to-rose-600"
     },
     {
-      title: "Software Development Intern",
-      company: "Astrodoc",
-      period: "Oct 2024 - May 2025",
+      title: "software development intern",
+      company: "astrodoc",
+      period: "oct 2024 - may 2025",
       description: [
-        "Built next-gen healthcare super app with 15-person cross-functional team",
-        "Developed features across Flask backend and React Native frontend",
-        "Helped scale platform to 300+ subscriptions across 25+ states"
-      ]
+        "building next-gen healthcare super app with 15-person cross-functional team",
+        "developing features across flask backend and react native frontend",
+        "helping scale platform to 300+ subscriptions across 25+ states"
+      ],
+      logo: "https://via.placeholder.com/80x80/059669/ffffff?text=AD",
+      color: "from-emerald-600 to-teal-600"
     },
     {
-      title: "Teaching Assistant",
-      company: "Cornell University",
-      period: "Aug 2025 - Dec 2025",
+      title: "teaching assistant",
+      company: "cornell university",
+      period: "aug 2025 - dec 2025",
       description: [
-        "Support 150+ students in Analysis of Algorithms course",
-        "Conduct office hours, grading, and exam review sessions"
-      ]
+        "supporting 150+ students in analysis of algorithms course",
+        "conducting office hours, grading, and exam review sessions"
+      ],
+      logo: "https://via.placeholder.com/80x80/7c3aed/ffffff?text=CU",
+      color: "from-purple-600 to-violet-600"
     }
   ];
 
   const projects = [
     {
-      name: "Eatery",
-      tech: "Python • Django • PostgreSQL • DigitalOcean",
-      description: "Lead backend developer for cross-platform dining app with 10,000+ monthly users. Refactored core systems for improved scalability and security.",
-      icon: "🍴"
+      name: "eatery",
+      tech: ["python", "django", "postgresql", "digitalocean"],
+      description: "cross-platform dining app with 10,000+ monthly active users. refactored core systems for improved scalability and security.",
+      image: "https://via.placeholder.com/400x250/3b82f6/ffffff?text=eatery",
+      gradient: "from-blue-500 to-indigo-600",
+      stats: { users: "10k+", platforms: 2, rating: "4.8" }
     },
     {
-      name: "Métissé",
-      tech: "Python • NumPy • SQLite • Tkinter",
-      description: "Full-stack stock recommendation engine using real-time market data from Yahoo Finance APIs. Implemented portfolio modeling with multidimensional vectors.",
-      icon: "📈"
+      name: "métissé",
+      tech: ["python", "numpy", "sqlite", "tkinter"],
+      description: "full-stack stock recommendation engine using real-time market data. implemented portfolio modeling with multidimensional vectors.",
+      image: "https://via.placeholder.com/400x250/10b981/ffffff?text=metisse",
+      gradient: "from-emerald-500 to-teal-600",
+      stats: { stocks: "500+", accuracy: "87%", apis: 3 }
     },
     {
-      name: "Snail Survival",
-      tech: "JavaScript • HTML • CSS",
-      description: "Chrome extension game with 100+ weekly active users across 40+ countries. Designed dynamic gameplay features and difficulty adjustment.",
-      icon: "🐌"
+      name: "snail survival",
+      tech: ["javascript", "html", "css", "chrome api"],
+      description: "chrome extension game with 100+ weekly active users across 40+ countries. designed dynamic gameplay and difficulty adjustment.",
+      image: "https://via.placeholder.com/400x250/f59e0b/ffffff?text=snail",
+      gradient: "from-amber-500 to-orange-600",
+      stats: { players: "100+", countries: 40, levels: 15 }
     }
   ];
 
   const skills = {
-    "Languages": ["Java", "Python", "OCaml", "C", "C#", "JavaScript", "HTML/CSS"],
-    "Technologies": ["React Native", "Flask", "Django", "Docker", "Git", "PostgreSQL", "MongoDB", "GraphQL", "Google Cloud"]
+    languages: [
+      { name: "java", icon: "☕" },
+      { name: "python", icon: "🐍" },
+      { name: "c/c++", icon: "⚡" },
+      { name: "javascript", icon: "✨" },
+      { name: "ocaml", icon: "🐪" },
+      { name: "c#", icon: "🔷" },
+      { name: "html/css", icon: "🎨" }
+    ],
+    technologies: [
+      { name: "react", icon: <Box size={16} /> },
+      { name: "django", icon: <Terminal size={16} /> },
+      { name: "flask", icon: <Cpu size={16} /> },
+      { name: "docker", icon: <Box size={16} /> },
+      { name: "postgresql", icon: <Database size={16} /> },
+      { name: "mongodb", icon: <Database size={16} /> },
+      { name: "graphql", icon: <GitBranch size={16} /> },
+      { name: "gcp", icon: <Cloud size={16} /> }
+    ]
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white text-gray-900">
       {/* Navigation */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrollY > 50 ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        scrollY > 50 ? 'bg-white/80 backdrop-blur-xl shadow-sm' : 'bg-transparent'
       }`}>
-        <div className="max-w-6xl mx-auto px-6 py-4">
+        <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <h1 className={`text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent transition-opacity duration-300 ${
+            <div className={`transition-all duration-500 ${
               scrollY > 50 ? 'opacity-100' : 'opacity-0'
             }`}>
-              SS
-            </h1>
+              <span className="text-lg font-light tracking-wider bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
+                ss
+              </span>
+            </div>
             
             {/* Desktop Menu */}
-            <div className="hidden md:flex space-x-8">
-              {['Home', 'About', 'Experience', 'Projects', 'Contact'].map((item) => (
+            <div className="hidden md:flex items-center space-x-8">
+              {['home', 'about', 'experience', 'projects', 'contact'].map((item) => (
                 <button
                   key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
-                  className={`text-gray-700 hover:text-blue-500 transition-colors duration-200 font-medium ${
-                    activeSection === item.toLowerCase() ? 'text-blue-500' : ''
+                  onClick={() => scrollToSection(item)}
+                  className={`text-sm font-light tracking-wide transition-all duration-300 ${
+                    activeSection === item 
+                      ? 'text-transparent bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text' 
+                      : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
                   {item}
@@ -135,20 +171,20 @@ const Portfolio = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden text-gray-700 hover:text-blue-500 transition-colors"
+              className="md:hidden text-gray-600 hover:text-gray-900 transition-colors"
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
 
           {/* Mobile Menu */}
           {mobileMenuOpen && (
-            <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg py-4">
-              {['Home', 'About', 'Experience', 'Projects', 'Contact'].map((item) => (
+            <div className="md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-xl shadow-lg py-4 mt-2 rounded-2xl mx-4 right-4" style={{width: 'calc(100% - 2rem)'}}>
+              {['home', 'about', 'experience', 'projects', 'contact'].map((item) => (
                 <button
                   key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
-                  className="block w-full text-left px-6 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-500 transition-colors"
+                  onClick={() => scrollToSection(item)}
+                  className="block w-full text-left px-6 py-3 text-sm font-light text-gray-600 hover:text-transparent hover:bg-gradient-to-r hover:from-violet-600 hover:to-indigo-600 hover:bg-clip-text transition-all"
                 >
                   {item}
                 </button>
@@ -160,145 +196,236 @@ const Portfolio = () => {
 
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-        {/* Animated gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-cyan-50"></div>
+        {/* Animated gradient orbs */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-violet-300 to-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-cyan-300 to-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" style={{animationDelay: '2s'}}></div>
+          <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-gradient-to-r from-rose-300 to-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{animationDelay: '4s'}}></div>
+        </div>
         
-        {/* Floating shapes */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-72 h-72 bg-cyan-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-        
-        <div className="relative z-10 text-center px-6 max-w-4xl">
+        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
           {/* Profile Picture */}
           <div className="mb-8 relative inline-block">
-            <div className="w-40 h-40 md:w-48 md:h-48 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400 p-1">
-              <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
-                <span className="text-6xl md:text-7xl">👨‍💻</span>
-              </div>
+            <div className="w-40 h-40 md:w-36 md:h-36 rounded-full overflow-hidden border border-gray-200 shadow-2xl bg-gradient-to-br from-violet-400 to-indigo-400 p-0.5">
+              <img 
+                src="profile.jpg" 
+                alt="Profile"
+                className="w-full h-full rounded-full object-cover bg-white"
+              />
             </div>
+            <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full border-4 border-white"></div>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
-              Skye Slattery
-            </span>
+          <h1 className="text-4xl md:text-5xl font-extralight tracking-tight mb-4 text-gray-900">
+            skye slattery
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-600 mb-8">
-            Software Engineer • Full Stack Developer • AI Enthusiast
+          <p className="text-lg md:text-xl text-gray-500 font-light tracking-wide mb-8">
+            software developer · backend systems · ai/ml
           </p>
           
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <a href="https://github.com/skyeslattery" target="_blank" rel="noopener noreferrer" 
-               className="px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200 flex items-center gap-2">
-              <Github size={20} />
-              GitHub
+          <div className="flex justify-center gap-6 mb-12">
+            <a href="https://github.com/skyeslattery" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               className="group relative p-3 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <Github size={20} className="text-gray-700 group-hover:text-violet-600 transition-colors" />
+              <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-xs bg-gray-900 text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                github
+              </span>
             </a>
-            <a href="mailto:dss354@cornell.edu" 
-               className="px-6 py-3 border-2 border-blue-500 text-blue-500 rounded-full hover:bg-blue-50 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200 flex items-center gap-2">
-              <Mail size={20} />
-              Contact Me
+            <a href="https://linkedin.com" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               className="group relative p-3 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <Linkedin size={20} className="text-gray-700 group-hover:text-violet-600 transition-colors" />
+              <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-xs bg-gray-900 text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                linkedin
+              </span>
+            </a>
+            <a href="mailto:dss354@cornell.edu"
+               className="group relative p-3 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <Mail size={20} className="text-gray-700 group-hover:text-violet-600 transition-colors" />
+              <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-xs bg-gray-900 text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                email
+              </span>
+            </a>
+            <a href="tel:607-793-3124"
+               className="group relative p-3 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <Phone size={20} className="text-gray-700 group-hover:text-violet-600 transition-colors" />
+              <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-xs bg-gray-900 text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                call
+              </span>
             </a>
           </div>
           
           <div className="animate-bounce">
-            <ChevronDown size={32} className="text-blue-400 mx-auto" />
+            <ChevronDown size={24} className="text-gray-400 mx-auto" strokeWidth={1} />
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-6 bg-gradient-to-b from-white to-blue-50">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
-            About Me
-          </h2>
+      <section id="about" className="py-32 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-16 text-center">
+            <h2 className="text-sm font-light tracking-[0.3em] uppercase text-gray-400 mb-4">about</h2>
+            <div className="w-12 h-0.5 bg-gradient-to-r from-violet-600 to-indigo-600 mx-auto"></div>
+          </div>
           
-          <div className="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-shadow duration-300">
-            <div className="flex items-center gap-2 mb-6">
-              <GraduationCap className="text-blue-500" size={24} />
-              <h3 className="text-2xl font-semibold">Cornell University</h3>
-            </div>
-            
-            <p className="text-gray-700 mb-4">
-              Computer Science major with a minor in AI, maintaining a <span className="font-bold text-blue-600">3.84 GPA</span>. 
-              Expected graduation: May 2027.
-            </p>
-            
-            <p className="text-gray-700 mb-6">
-              Passionate about building scalable, production-grade software that makes a real impact. 
-              From developing apps used by thousands of Cornell students to contributing to enterprise financial software, 
-              I love tackling complex technical challenges and creating elegant solutions.
-            </p>
-            
-            <div className="grid md:grid-cols-2 gap-6">
-              {Object.entries(skills).map(([category, items]) => (
-                <div key={category}>
-                  <h4 className="font-semibold text-gray-900 mb-3">{category}:</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {items.map((skill) => (
-                      <span key={skill} className="px-3 py-1 bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-700 rounded-full text-sm hover:shadow-md transition-shadow">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            <div className="space-y-6">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-gradient-to-r from-violet-100 to-indigo-100 rounded-xl">
+                  <GraduationCap size={20} className="text-violet-600" />
                 </div>
-              ))}
+                <div>
+                  <h3 className="text-lg font-light">cornell university</h3>
+                  <p className="text-sm text-gray-500">cs major · ai minor · 3.84 gpa</p>
+                </div>
+              </div>
+              
+              <p className="text-gray-600 font-light leading-relaxed">
+                passionate about building scalable, production-grade software that makes a real impact. 
+                from developing apps used by thousands of cornell students to contributing to enterprise financial software, 
+                i love tackling complex technical challenges and creating elegant solutions.
+              </p>
+
+              <p className="text-gray-600 font-light leading-relaxed">
+                currently exploring the intersection of ai and software engineering, 
+                with a focus on creating intuitive user experiences and robust backend systems.
+              </p>
+            </div>
+
+            <div className="space-y-8">
+              <div>
+                <h4 className="text-sm font-light tracking-wider text-gray-400 mb-4">languages</h4>
+                <div className="flex flex-wrap gap-3">
+                  {skills.languages.map((skill) => (
+                    <div key={skill.name} 
+                         className="group flex items-center gap-2 px-4 py-2 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5">
+                      <span className="text-lg">{skill.icon}</span>
+                      <span className="text-sm font-light text-gray-600 group-hover:text-gray-900 transition-colors">
+                        {skill.name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-sm font-light tracking-wider text-gray-400 mb-4">technologies</h4>
+                <div className="flex flex-wrap gap-3">
+                  {skills.technologies.map((tech) => (
+                    <div key={tech.name} 
+                         className="group flex items-center gap-2 px-4 py-2 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5">
+                      <span className="text-violet-600">{tech.icon}</span>
+                      <span className="text-sm font-light text-gray-600 group-hover:text-gray-900 transition-colors">
+                        {tech.name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Experience Section */}
-      <section id="experience" className="py-20 px-6">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
-            Experience
-          </h2>
+      {/* Projects Section */}
+      <section id="projects" className="py-32 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-16 text-center">
+            <h2 className="text-sm font-light tracking-[0.3em] uppercase text-gray-400 mb-4">projects</h2>
+            <div className="w-12 h-0.5 bg-gradient-to-r from-violet-600 to-indigo-600 mx-auto"></div>
+          </div>
           
-          <div className="space-y-6">
-            {experiences.map((exp, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 border-l-4 border-blue-500">
-                <div className="flex flex-wrap justify-between items-start mb-4">
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900">{exp.title}</h3>
-                    <p className="text-blue-600 font-medium flex items-center gap-2">
-                      <Briefcase size={16} />
-                      {exp.company}
-                    </p>
-                  </div>
-                  <span className="text-gray-500 text-sm mt-2 md:mt-0">{exp.period}</span>
+          <div className="grid md:grid-cols-3 gap-8">
+            {projects.map((project, index) => (
+              <div key={index} 
+                   className="group relative overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-2xl transition-all duration-500"
+                   onMouseEnter={() => setHoveredProject(index)}
+                   onMouseLeave={() => setHoveredProject(null)}>
+                <div className="relative h-48 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50">
+                  <img 
+                    src={project.image} 
+                    alt={project.name}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-t ${project.gradient} opacity-60 group-hover:opacity-40 transition-opacity duration-500`}></div>
                 </div>
-                <ul className="space-y-2">
-                  {exp.description.map((item, i) => (
-                    <li key={i} className="text-gray-700 flex items-start">
-                      <span className="text-blue-400 mr-2 mt-1">•</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                
+                <div className="p-6 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-lg font-light text-gray-900">{project.name}</h3>
+                    <ArrowUpRight size={16} className="text-gray-400 group-hover:text-violet-600 transition-colors duration-300" />
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((t) => (
+                      <span key={t} className="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded-lg font-light">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <p className="text-sm text-gray-600 font-light leading-relaxed">
+                    {project.description}
+                  </p>
+                  
+                  <div className="flex items-center gap-4 pt-2 border-t border-gray-100">
+                    {Object.entries(project.stats).map(([key, value]) => (
+                      <div key={key} className="text-center">
+                        <p className="text-sm font-light text-gray-900">{value}</p>
+                        <p className="text-xs text-gray-400">{key}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section id="projects" className="py-20 px-6 bg-gradient-to-b from-white to-blue-50">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
-            Projects
-          </h2>
+      {/* Experience Section */}
+      <section id="experience" className="py-32 px-6 bg-gradient-to-b from-gray-50 to-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-16 text-center">
+            <h2 className="text-sm font-light tracking-[0.3em] uppercase text-gray-400 mb-4">experience</h2>
+            <div className="w-12 h-0.5 bg-gradient-to-r from-violet-600 to-indigo-600 mx-auto"></div>
+          </div>
           
-          <div className="grid md:grid-cols-3 gap-6">
-            {projects.map((project, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
-                <div className="text-4xl mb-4">{project.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{project.name}</h3>
-                <p className="text-sm text-blue-600 mb-4 flex items-center gap-1">
-                  <Code size={14} />
-                  {project.tech}
-                </p>
-                <p className="text-gray-700">{project.description}</p>
+          <div className="grid md:grid-cols-2 gap-8">
+            {experiences.map((exp, index) => (
+              <div key={index} 
+                   className="group relative bg-white rounded-2xl p-8 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1"
+                   onMouseEnter={() => setHoveredExp(index)}
+                   onMouseLeave={() => setHoveredExp(null)}>
+                <div className={`absolute inset-0 bg-gradient-to-br ${exp.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-500`}></div>
+                
+                <div className="relative">
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="flex items-center gap-4">
+                      <img src={exp.logo} alt={exp.company} className="w-12 h-12 rounded-xl shadow-sm" />
+                      <div>
+                        <h3 className="text-lg font-light text-gray-900">{exp.title}</h3>
+                        <p className="text-sm text-gray-500">{exp.company}</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <p className="text-xs font-light text-gray-400 tracking-wider uppercase mb-4">{exp.period}</p>
+                  
+                  <ul className="space-y-3">
+                    {exp.description.map((item, i) => (
+                      <li key={i} className="flex items-start text-sm text-gray-600 font-light leading-relaxed">
+                        <span className={`inline-block w-1 h-1 rounded-full bg-gradient-to-r ${exp.color} mt-2 mr-3 flex-shrink-0`}></span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             ))}
           </div>
@@ -306,44 +433,59 @@ const Portfolio = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-6">
+      <section id="contact" className="py-32 px-6 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-12 bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
-            Get In Touch
-          </h2>
+          <div className="mb-16">
+            <h2 className="text-sm font-light tracking-[0.3em] uppercase text-gray-400 mb-4">contact</h2>
+            <div className="w-12 h-0.5 bg-gradient-to-r from-violet-600 to-indigo-600 mx-auto"></div>
+          </div>
           
-          <p className="text-xl text-gray-700 mb-8">
-            I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology!
+          <p className="text-2xl font-light text-gray-700 mb-4">
+            let's create something amazing together
           </p>
           
-          <div className="flex flex-wrap justify-center gap-6">
-            <a href="mailto:dss354@cornell.edu" className="flex items-center gap-2 text-gray-700 hover:text-blue-500 transition-colors">
-              <Mail size={20} />
-              dss354@cornell.edu
+          <p className="text-gray-500 font-light mb-12 max-w-2xl mx-auto">
+            always open to discussing new opportunities, interesting projects, 
+            or just having a chat about technology and innovation.
+          </p>
+          
+          <div className="flex flex-wrap justify-center gap-8 mb-12">
+            <a href="mailto:dss354@cornell.edu" 
+               className="group flex items-center gap-3 text-gray-600 hover:text-violet-600 transition-colors duration-300">
+              <div className="p-2 bg-white rounded-xl shadow-sm group-hover:shadow-md transition-all duration-300">
+                <Mail size={18} />
+              </div>
+              <span className="text-sm font-light">dss354@cornell.edu</span>
             </a>
-            <a href="tel:607-793-3124" className="flex items-center gap-2 text-gray-700 hover:text-blue-500 transition-colors">
-              <Phone size={20} />
-              607-793-3124
+            <a href="tel:607-793-3124" 
+               className="group flex items-center gap-3 text-gray-600 hover:text-violet-600 transition-colors duration-300">
+              <div className="p-2 bg-white rounded-xl shadow-sm group-hover:shadow-md transition-all duration-300">
+                <Phone size={18} />
+              </div>
+              <span className="text-sm font-light">607.793.3124</span>
             </a>
-            <span className="flex items-center gap-2 text-gray-700">
-              <MapPin size={20} />
-              Ithaca, NY
-            </span>
+            <div className="group flex items-center gap-3 text-gray-600">
+              <div className="p-2 bg-white rounded-xl shadow-sm">
+                <MapPin size={18} />
+              </div>
+              <span className="text-sm font-light">ithaca, ny</span>
+            </div>
           </div>
           
-          <div className="mt-12">
-            <a href="mailto:dss354@cornell.edu" 
-               className="inline-block px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200 font-semibold">
-              Send Me an Email
-            </a>
-          </div>
+          <a href="mailto:dss354@cornell.edu" 
+             className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-violet-600 to-indigo-600 text-white rounded-full hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 font-light text-sm tracking-wide">
+            start a conversation
+            <ArrowUpRight size={16} />
+          </a>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-6 bg-gradient-to-r from-blue-500 to-cyan-500 text-white">
+      <footer className="py-8 px-6 border-t border-gray-100">
         <div className="max-w-4xl mx-auto text-center">
-          <p>&copy; 2025 Skye Slattery. Built with React & Tailwind CSS</p>
+          <p className="text-xs font-light text-gray-400 tracking-wider">
+            © 2025 skye slattery · built with react & tailwind css
+          </p>
         </div>
       </footer>
     </div>
