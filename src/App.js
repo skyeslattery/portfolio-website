@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Github, Mail, Phone, MapPin, Code2, Briefcase, GraduationCap, ChevronDown, Menu, X, ArrowUpRight, Linkedin, Terminal, Database, Cloud, GitBranch, Box, Cpu } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Github, Mail, Phone, MapPin, GraduationCap, ChevronDown, Menu, X, ArrowUpRight, Linkedin } from 'lucide-react';
 
 const Portfolio = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -74,6 +74,18 @@ const Portfolio = () => {
       color: "from-emerald-600 to-teal-600"
     },
     {
+      title: "course instructor",
+      company: "cornell university",
+      period: "jan 2025 - may 2025",
+      description: [
+        "taught cornell-accredited course on backend development to 70+ students",
+        "delivered lectures and provided hands-on assistance with complex backend concepts",
+        "collaborated with teaching staff to optimize curriculum and learning outcomes"
+      ],
+      logo: "/logos/cornell.png",
+      color: "from-purple-600 to-violet-600"
+    },
+    {
       title: "teaching assistant",
       company: "cornell university",
       period: "aug 2025 - dec 2025",
@@ -99,7 +111,7 @@ const Portfolio = () => {
       name: "métissé",
       tech: ["python", "numpy", "sqlite", "tkinter"],
       description: "full-stack stock recommendation engine using real-time market data. implemented portfolio modeling with multidimensional vectors.",
-      image: "/logos/score.png",
+      image: "/logos/metisse.png",
       gradient: "from-emerald-500 to-teal-600",
       stats: { stocks: "500+", accuracy: "87%", apis: 3 }
     },
@@ -110,28 +122,97 @@ const Portfolio = () => {
       image: "/logos/snail-survival.png",
       gradient: "from-amber-500 to-orange-600",
       stats: { players: "100+", countries: 40, levels: 15 }
+    },
+    {
+      name: "score",
+      tech: ["python", "mongodb", "graphql"],
+      description: "cross-platform sports app for cornell students. improved data retrieval speed by 300% through graphql and mongodb optimization.",
+      image: "/logos/score.png",
+      gradient: "from-red-500 to-rose-600",
+      stats: { users: "5k+", platforms: 2, rating: "4.7" }
     }
   ];
 
   const skills = {
     languages: [
-      { name: "java", icon: "☕" },
-      { name: "python", icon: "🐍" },
-      { name: "c/c++", icon: "⚡" },
-      { name: "javascript", icon: "✨" },
-      { name: "ocaml", icon: "🐪" },
-      { name: "c#", icon: "🔷" },
-      { name: "html/css", icon: "🎨" }
+      { 
+        name: "java", 
+        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" className="w-5 h-5" alt="Java" /> 
+      },
+      { 
+        name: "python", 
+        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" className="w-5 h-5" alt="Python" /> 
+      },
+      { 
+        name: "c/c++", 
+        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" className="w-5 h-5" alt="C++" /> 
+      },
+      { 
+        name: "javascript", 
+        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" className="w-5 h-5" alt="JavaScript" /> 
+      },
+      { 
+        name: "ocaml", 
+        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ocaml/ocaml-original.svg" className="w-5 h-5" alt="OCaml" /> 
+      },
+      { 
+        name: "c#", 
+        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" className="w-5 h-5" alt="C#" /> 
+      },
+      { 
+        name: "html/css", 
+        icon: <div className="flex">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" className="w-5 h-5" alt="HTML5" />
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" className="w-5 h-5 ml-0.5" alt="CSS3" />
+              </div> 
+      }
     ],
     technologies: [
-      { name: "react", icon: <Box size={16} /> },
-      { name: "django", icon: <Terminal size={16} /> },
-      { name: "flask", icon: <Cpu size={16} /> },
-      { name: "docker", icon: <Box size={16} /> },
-      { name: "postgresql", icon: <Database size={16} /> },
-      { name: "mongodb", icon: <Database size={16} /> },
-      { name: "graphql", icon: <GitBranch size={16} /> },
-      { name: "gcp", icon: <Cloud size={16} /> }
+      { 
+        name: "flask", 
+        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" className="w-5 h-5" alt="Flask" /> 
+      },
+      { 
+        name: "docker", 
+        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" className="w-5 h-5" alt="Docker" /> 
+      },
+      { 
+        name: "react", 
+        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" className="w-5 h-5" alt="React" /> 
+      },
+      { 
+        name: "django", 
+        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" className="w-5 h-5" alt="Django" /> 
+      },
+      { 
+        name: "postgresql", 
+        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" className="w-5 h-5" alt="PostgreSQL" /> 
+      },
+      { 
+        name: "mongodb", 
+        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" className="w-5 h-5" alt="MongoDB" /> 
+      },
+      { 
+        name: "graphql", 
+        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg" className="w-5 h-5" alt="GraphQL" /> 
+      },
+      {
+        name: "numpy",
+        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" className="w-5 h-5" alt="NumPy" />
+      },
+      { 
+        name: "gcp", 
+        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" className="w-5 h-5" alt="Google Cloud Platform" /> 
+      },
+      {
+        name: "aws",
+        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" className="w-5 h-5" alt="AWS" />
+      },
+      {
+        name: "tensorflow",
+        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" className="w-5 h-5" alt="TensorFlow" />
+      },
+      
     ]
   };
 
@@ -281,7 +362,8 @@ const Portfolio = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-light">cornell university</h3>
-                  <p className="text-sm text-gray-500">cs major · ai minor · 3.84 gpa</p>
+                  <h3 className="text-sm text-gray-500">class of 2027</h3>
+                  <p className="text-sm text-gray-500">cs major · ai minor</p>
                 </div>
               </div>
               
@@ -293,7 +375,7 @@ const Portfolio = () => {
 
               <p className="text-gray-600 font-light leading-relaxed">
                 currently exploring the intersection of ai and software engineering, 
-                with a focus on creating intuitive user experiences and robust backend systems.
+                with a focus on creating robust backend systems and scalable architecture.
               </p>
             </div>
 
@@ -346,11 +428,17 @@ const Portfolio = () => {
                 className="group relative overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-2xl transition-all duration-500"
                 onMouseEnter={() => setHoveredProject(index)}
                 onMouseLeave={() => setHoveredProject(null)}>
-              <div className={`relative h-56 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50 ${project.name === "snail survival" ? "" : "pt-4 pb-2"}`}>
+              <div className={`relative h-56 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50 ${
+                project.name === "snail survival" ? "" : 
+                project.name === "métissé" ? "pt-8 pb-6 px-4" : "pt-4 pb-2"
+              }`}>
                 <img 
                   src={project.image} 
                   alt={project.name}
-                  className={`w-full h-full transition-transform duration-700 group-hover:scale-110 ${project.name === "snail survival" ? "object-cover" : "object-contain"}`}
+                  className={`w-full h-full transition-transform duration-700 group-hover:scale-110 ${
+                    project.name === "snail survival" ? "object-cover" : 
+                    project.name === "métissé" ? "object-contain scale-90" : "object-contain"
+                  }`}
                 />
                 <div className={`absolute inset-0 bg-gradient-to-t ${project.gradient} opacity-10 group-hover:opacity-5 transition-opacity duration-500 mix-blend-overlay`}></div>
               </div>
@@ -441,12 +529,12 @@ const Portfolio = () => {
           </div>
           
           <p className="text-2xl font-light text-gray-700 mb-4">
-            let's create something amazing together
+            let's build something
           </p>
           
           <p className="text-gray-500 font-light mb-12 max-w-2xl mx-auto">
             always open to discussing new opportunities, interesting projects, 
-            or just having a chat about technology and innovation.
+            or just having a chat.
           </p>
           
           <div className="flex flex-wrap justify-center gap-8 mb-12">
@@ -457,12 +545,12 @@ const Portfolio = () => {
               </div>
               <span className="text-sm font-light">dss354@cornell.edu</span>
             </a>
-            <a href="tel:607-793-3124" 
-               className="group flex items-center gap-3 text-gray-600 hover:text-violet-600 transition-colors duration-300">
+            <a href="https://www.linkedin.com/in/skyeslattery/" 
+              className="group flex items-center gap-3 text-gray-600 hover:text-violet-600 transition-colors duration-300">
               <div className="p-2 bg-white rounded-xl shadow-sm group-hover:shadow-md transition-all duration-300">
-                <Phone size={18} />
+                <Linkedin size={18} />
               </div>
-              <span className="text-sm font-light">607.793.3124</span>
+              <span className="text-sm font-light">linkedin.com</span>
             </a>
             <div className="group flex items-center gap-3 text-gray-600">
               <div className="p-2 bg-white rounded-xl shadow-sm">
@@ -470,6 +558,13 @@ const Portfolio = () => {
               </div>
               <span className="text-sm font-light">ithaca, ny</span>
             </div>
+            <a href="https://github.com/skyeslattery" 
+              className="group flex items-center gap-3 text-gray-600 hover:text-violet-600 transition-colors duration-300">
+              <div className="p-2 bg-white rounded-xl shadow-sm group-hover:shadow-md transition-all duration-300">
+                <Github size={18} />
+              </div>
+              <span className="text-sm font-light">github.com</span>
+            </a>
           </div>
           
           <a href="mailto:dss354@cornell.edu" 
