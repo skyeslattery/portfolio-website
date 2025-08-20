@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Github, Mail, Phone, MapPin, GraduationCap, ChevronDown, Menu, X, ArrowUpRight, Linkedin } from 'lucide-react';
+import { Github, Mail, MapPin, GraduationCap, ChevronDown, Menu, X, ArrowUpRight, Linkedin } from 'lucide-react';
 
 const Portfolio = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -105,7 +105,7 @@ const Portfolio = () => {
       description: "cross-platform dining app with 10,000+ monthly active users. refactored core systems for improved scalability and security.",
       image: "/logos/eatery.png",
       gradient: "from-blue-500 to-indigo-600",
-      stats: { users: "10k+", platforms: 2, rating: "4.8" }
+      highlights: ["11k+ active users", "cross-platform", "4.7 rating", "notifications", "refactored authentication"]
     },
     {
       name: "métissé",
@@ -113,7 +113,7 @@ const Portfolio = () => {
       description: "full-stack stock recommendation engine using real-time market data. implemented portfolio modeling with multidimensional vectors.",
       image: "/logos/metisse.png",
       gradient: "from-emerald-500 to-teal-600",
-      stats: { stocks: "500+", accuracy: "87%", apis: 3 }
+      highlights: ["500+ stocks", "yahoo finance api", "real-time data", "ml integration"]
     },
     {
       name: "snail survival",
@@ -121,7 +121,7 @@ const Portfolio = () => {
       description: "chrome extension game with 100+ weekly active users across 40+ countries. designed dynamic gameplay and difficulty adjustment.",
       image: "/logos/snail-survival.png",
       gradient: "from-amber-500 to-orange-600",
-      stats: { players: "100+", countries: 40, levels: 15 }
+      highlights: ["100+ players", "40+ countries", "chrome store", "dynamic difficulty", "marketplace"]
     },
     {
       name: "score",
@@ -129,7 +129,23 @@ const Portfolio = () => {
       description: "cross-platform sports app for cornell students. improved data retrieval speed by 300% through graphql and mongodb optimization.",
       image: "/logos/score.png",
       gradient: "from-red-500 to-rose-600",
-      stats: { users: "5k+", platforms: 2, rating: "4.7" }
+      highlights: ["10+ sports", "300% faster", "5s scrape", "notifications"]
+    },
+    {
+      name: "climber",
+      tech: ["unity", "c#", "procreate", "game design"],
+      description: "2d platformer game with handmade pixel art. features challenging mountain climbing mechanics inspired by real rock climbing. handmade physics and platforming mechanics for smooth user experience.",
+      image: "/logos/climber.png",
+      gradient: "from-indigo-500 to-purple-600",
+      highlights: ["handmade art", "physics engine", "ability system"]
+    },
+    {
+      name: "skatehub",
+      tech: ["python", "flask", "sqlalchemy", "aws s3", "javascript"],
+      description: "social media platform for skateboarding enthusiasts. features interactive map for skate spots, video sharing, and social interactions with secure authentication.",
+      image: "/logos/skatehub.png",
+      gradient: "from-slate-500 to-gray-600",
+      highlights: ["google maps api", "aws s3", "full-stack", ""]
     }
   ];
 
@@ -331,13 +347,6 @@ const Portfolio = () => {
                 email
               </span>
             </a>
-            <a href="tel:607-793-3124"
-               className="group relative p-3 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <Phone size={20} className="text-gray-700 group-hover:text-violet-600 transition-colors" />
-              <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-xs bg-gray-900 text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                call
-              </span>
-            </a>
           </div>
           
           <div className="animate-bounce">
@@ -385,9 +394,9 @@ const Portfolio = () => {
                 <div className="flex flex-wrap gap-3">
                   {skills.languages.map((skill) => (
                     <div key={skill.name} 
-                         className="group flex items-center gap-2 px-4 py-2 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5">
-                      <span className="text-lg">{skill.icon}</span>
-                      <span className="text-sm font-light text-gray-600 group-hover:text-gray-900 transition-colors">
+                        className="group flex items-center gap-3 px-5 py-3 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5">
+                      <span className="text-xl">{skill.icon}</span>
+                      <span className="text-m font-light text-gray-600 group-hover:text-gray-900 transition-colors">
                         {skill.name}
                       </span>
                     </div>
@@ -400,9 +409,9 @@ const Portfolio = () => {
                 <div className="flex flex-wrap gap-3">
                   {skills.technologies.map((tech) => (
                     <div key={tech.name} 
-                         className="group flex items-center gap-2 px-4 py-2 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5">
+                        className="group flex items-center gap-3 px-5 py-3 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5">
                       <span className="text-violet-600">{tech.icon}</span>
-                      <span className="text-sm font-light text-gray-600 group-hover:text-gray-900 transition-colors">
+                      <span className="text-m font-light text-gray-600 group-hover:text-gray-900 transition-colors">
                         {tech.name}
                       </span>
                     </div>
@@ -429,21 +438,21 @@ const Portfolio = () => {
                 onMouseEnter={() => setHoveredProject(index)}
                 onMouseLeave={() => setHoveredProject(null)}>
               <div className={`relative h-56 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50 ${
-                project.name === "snail survival" ? "" : 
-                project.name === "métissé" ? "pt-8 pb-6 px-4" : "pt-4 pb-2"
+                project.name === "snail survival" || project.name === "climber" ? "" : 
+                project.name === "métissé" || project.name === "skatehub" ? "pt-8 pb-6 px-4" : "pt-4 pb-2"
               }`}>
                 <img 
                   src={project.image} 
                   alt={project.name}
                   className={`w-full h-full transition-transform duration-700 group-hover:scale-110 ${
-                    project.name === "snail survival" ? "object-cover" : 
-                    project.name === "métissé" ? "object-contain scale-90" : "object-contain"
+                    project.name === "snail survival" || project.name === "climber" ? "object-cover" : 
+                    project.name === "métissé" || project.name === "skatehub" ? "object-contain scale-90" : "object-contain"
                   }`}
                 />
                 <div className={`absolute inset-0 bg-gradient-to-t ${project.gradient} opacity-10 group-hover:opacity-5 transition-opacity duration-500 mix-blend-overlay`}></div>
               </div>
                 
-                <div className="p-6 space-y-4 h-64 flex flex-col">
+                <div className="p-6 space-y-4 min-h-[2rem] flex flex-col">
                   <div className="flex items-center justify-between">
                     <h3 className="text-lg font-light text-gray-900">{project.name}</h3>
                     <ArrowUpRight size={16} className="text-gray-400 group-hover:text-violet-600 transition-colors duration-300" />
@@ -461,12 +470,11 @@ const Portfolio = () => {
                     {project.description}
                   </p>
                   
-                  <div className="flex items-center gap-4 pt-2 border-t border-gray-100">
-                    {Object.entries(project.stats).map(([key, value]) => (
-                      <div key={key} className="text-center">
-                        <p className="text-sm font-light text-gray-900">{value}</p>
-                        <p className="text-xs text-gray-400">{key}</p>
-                      </div>
+                  <div className="flex flex-wrap gap-2 pt-2 border-t border-gray-100 mt-auto">
+                    {project.highlights && project.highlights.map((highlight) => (
+                      <span key={highlight} className="text-xs px-2 py-1 mb-1 bg-gray-50 text-gray-600 rounded-full font-light">
+                        {highlight}
+                      </span>
                     ))}
                   </div>
                 </div>
