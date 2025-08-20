@@ -5,8 +5,8 @@ const Portfolio = () => {
   const [scrollY, setScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [hoveredProject, setHoveredProject] = useState(null);
-  const [hoveredExp, setHoveredExp] = useState(null);
+  const [, setHoveredProject] = useState(null);
+  const [, setHoveredExp] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
