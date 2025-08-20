@@ -105,7 +105,11 @@ const Portfolio = () => {
       description: "cross-platform dining app with 10,000+ monthly active users. refactored core systems for improved scalability and security.",
       image: "/logos/eatery.png",
       gradient: "from-blue-500 to-indigo-600",
-      highlights: ["11k+ active users", "cross-platform", "4.7 rating", "notifications", "refactored authentication"]
+      highlights: ["11k+ active users", "cross-platform", "4.7 rating", "notifications", "refactored authentication"],
+      links: [
+        { type: "github", url: "https://github.com/cuappdev/eatery-blue-backend" },
+        { type: "appstore", url: "https://apps.apple.com/app/id1089672962" }
+      ]
     },
     {
       name: "métissé",
@@ -113,7 +117,10 @@ const Portfolio = () => {
       description: "full-stack stock recommendation engine using real-time market data. implemented portfolio modeling with multidimensional vectors.",
       image: "/logos/metisse.png",
       gradient: "from-emerald-500 to-teal-600",
-      highlights: ["500+ stocks", "yahoo finance api", "real-time data", "ml integration"]
+      highlights: ["500+ stocks", "yahoo finance api", "real-time data", "ml integration"],
+      links: [
+        { type: "github", url: "https://github.com/skyeslattery/metisse" }
+      ]
     },
     {
       name: "snail survival",
@@ -121,7 +128,11 @@ const Portfolio = () => {
       description: "chrome extension game with 100+ weekly active users across 40+ countries. designed dynamic gameplay and difficulty adjustment.",
       image: "/logos/snail-survival.png",
       gradient: "from-amber-500 to-orange-600",
-      highlights: ["100+ players", "40+ countries", "chrome store", "dynamic difficulty", "marketplace"]
+      highlights: ["100+ players", "40+ countries", "chrome store", "dynamic difficulty", "marketplace"],
+      links: [
+        { type: "github", url: "https://github.com/skyeslattery/snail-survival" },
+        { type: "chrome", url: "https://chromewebstore.google.com/detail/snail-survival/hfbhgeoipeeihbacnjhndjlankpfalhn" }
+      ]
     },
     {
       name: "score",
@@ -129,7 +140,11 @@ const Portfolio = () => {
       description: "cross-platform sports app for cornell students. improved data retrieval speed by 300% through graphql and mongodb optimization.",
       image: "/logos/score.png",
       gradient: "from-red-500 to-rose-600",
-      highlights: ["10+ sports", "300% faster", "5s scrape", "notifications"]
+      highlights: ["10+ sports", "300% faster", "5s scrape", "notifications"],
+      links: [
+        { type: "github", url: "https://github.com/cuappdev/score-backend" },
+        { type: "appstore", url: "https://apps.apple.com/us/app/score-cornell-sports/id6742861913" }
+      ]
     },
     {
       name: "climber",
@@ -137,7 +152,10 @@ const Portfolio = () => {
       description: "2d platformer game with handmade pixel art. features challenging mountain climbing mechanics inspired by real rock climbing. handmade physics and platforming mechanics for smooth user experience.",
       image: "/logos/climber.png",
       gradient: "from-indigo-500 to-purple-600",
-      highlights: ["handmade art", "physics engine", "ability system"]
+      highlights: ["handmade art", "physics engine", "ability system"],
+      links: [
+        { type: "github", url: "https://github.com/skyeslattery/climber" }
+      ]
     },
     {
       name: "skatehub",
@@ -145,7 +163,10 @@ const Portfolio = () => {
       description: "social media platform for skateboarding enthusiasts. features interactive map for skate spots, video sharing, and social interactions with secure authentication.",
       image: "/logos/skatehub.png",
       gradient: "from-slate-500 to-gray-600",
-      highlights: ["google maps api", "aws s3", "full-stack", ""]
+      highlights: ["google maps api", "aws s3", "full-stack"],
+      links: [
+        { type: "github", url: "https://github.com/skyeslattery/skatehub" }
+      ]
     }
   ];
 
@@ -238,14 +259,12 @@ const Portfolio = () => {
       <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         scrollY > 50 ? 'bg-white/80 backdrop-blur-xl shadow-sm' : 'bg-transparent'
       }`}>
-        <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="max-w-full mx-auto px-12 py-4">
           <div className="flex justify-between items-center">
             <div className={`transition-all duration-500 ${
               scrollY > 50 ? 'opacity-100' : 'opacity-0'
             }`}>
-              <span className="text-lg font-light tracking-wider bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
-                ss
-              </span>
+              <img src="logos/logo.png" alt="Logo" className="w-10 h-10 rounded-full" />
             </div>
             
             {/* Desktop Menu */}
@@ -317,8 +336,10 @@ const Portfolio = () => {
             skye slattery
           </h1>
           
-          <p className="text-lg md:text-xl text-gray-500 font-light tracking-wide mb-8">
-            software developer · backend systems · ai/ml
+          <p className="text-lg md:text-xl font-light tracking-wide mb-8">
+            <span className="text-gray-500 animate-glow">
+              software developer · backend systems · ai/ml
+            </span>
           </p>
           
           <div className="flex justify-center gap-6 mb-12">
@@ -331,7 +352,7 @@ const Portfolio = () => {
                 github
               </span>
             </a>
-            <a href="https://linkedin.com" 
+            <a href="https://linkedin.com/in/skyeslattery" 
                target="_blank" 
                rel="noopener noreferrer"
                className="group relative p-3 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
@@ -455,7 +476,33 @@ const Portfolio = () => {
                 <div className="p-6 space-y-4 min-h-[2rem] flex flex-col">
                   <div className="flex items-center justify-between">
                     <h3 className="text-lg font-light text-gray-900">{project.name}</h3>
-                    <ArrowUpRight size={16} className="text-gray-400 group-hover:text-violet-600 transition-colors duration-300" />
+                    <div className="flex items-center gap-2">
+                      {project.links && project.links.map((link) => (
+                        <a 
+                          key={link.type}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-400 hover:text-violet-600 transition-colors duration-300"
+                        >
+                          {link.type === 'github' && <Github size={16} />}
+                          {link.type === 'appstore' && (
+                            <img 
+                              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" 
+                              className="w-4 h-4 grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-300" 
+                              alt="App Store" 
+                            />
+                          )}
+                          {link.type === 'chrome' && (
+                            <img 
+                              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg" 
+                              className="w-4 h-4 grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-300" 
+                              alt="Chrome Web Store" 
+                            />
+                          )}
+                        </a>
+                      ))}
+                    </div>
                   </div>
                   
                   <div className="flex flex-wrap gap-2">
