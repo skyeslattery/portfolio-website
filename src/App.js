@@ -7,7 +7,7 @@ const Portfolio = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [, setHoveredProject] = useState(null);
   const [, setHoveredExp] = useState(null);
-
+  
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -35,16 +35,38 @@ const Portfolio = () => {
       setMobileMenuOpen(false);
     }
   };
-
+  
   const experiences = [
+    {
+      title: "software engineering intern",
+      company: "google",
+      period: "may 2026 - aug 2026",
+      description: [
+        "incoming summer 2026 on vertex ai"
+      ],
+      logo: "/logos/google.png",
+      color: "from-blue-500 to-green-500",
+      incoming: true
+    },
+    {
+      title: "software engineering intern",
+      company: "ramp",
+      period: "aug 2026 - nov 2026",
+      description: [
+        "incoming fall 2026 backend"
+      ],
+      logo: "/logos/ramp.png",
+      color: "from-amber-500 to-yellow-500",
+      incoming: true
+    },
     {
       title: "software engineering intern",
       company: "onestream software",
       period: "may 2025 - aug 2025",
       description: [
-        "transforming postman-based api workflows into scalable restsharp test suite using c#",
-        "collaborating with qa and devops teams for robust regression testing",
-        "contributing to enterprise-level financial planning and analytics software"
+        "platform team - backend and automation",
+        "built tooling to streamline api testing across the org",
+        "worked with devops and qa to contribute to enterprise-level financial planning software"
       ],
       logo: "/logos/onestream.png",
       color: "from-blue-600 to-indigo-600"
@@ -54,9 +76,9 @@ const Portfolio = () => {
       company: "cornell app development",
       period: "sep 2024 - present",
       description: [
-        "leading backend development for apps used by 50%+ of cornell undergraduates",
-        "teaching backend concepts to 70+ students including distributed systems and api design",
-        "improved score app data retrieval speed by 300% through graphql and mongodb optimization"
+        "built and maintained backend for apps used by 50%+ of cornell undergraduates",
+        "taught backend concepts to 70+ students including distributed systems and api design",
+        "optimized score app data retrieval speed by 300% through graphql and mongodb"
       ],
       logo: "/logos/appdev.png",
       color: "from-red-600 to-rose-600"
@@ -66,9 +88,9 @@ const Portfolio = () => {
       company: "stealth startup",
       period: "oct 2024 - may 2025",
       description: [
-        "building next-gen healthcare super app",
-        "developing features",
-        "helping scale platform"
+        "next-gen healthcare super app",
+        "full-stack development, ml integration",
+        "scaled platform"
       ],
       logo: "/logos/stealth-startup.jpeg",
       color: "from-emerald-600 to-teal-600"
@@ -90,8 +112,8 @@ const Portfolio = () => {
       company: "cornell university",
       period: "aug 2025 - dec 2025",
       description: [
-        "supporting 150+ students in analysis of algorithms course",
-        "conducting office hours, grading, and exam review sessions"
+        "supported 150+ students in analysis of algorithms course",
+        "conducted office hours, graded, and reviewed exams"
       ],
       logo: "/logos/cornell.png",
       color: "from-purple-600 to-violet-600"
@@ -105,7 +127,7 @@ const Portfolio = () => {
       description: "cross-platform dining app with 10,000+ monthly active users. refactored core systems for improved scalability and security.",
       image: "/logos/eatery.png",
       gradient: "from-blue-500 to-indigo-600",
-      highlights: ["11k+ active users", "cross-platform", "4.7 rating", "notifications", "refactored authentication"],
+      highlights: ["10,000+ active users", "cross-platform", "4.7 rating", "notifications", "refactored authentication"],
       links: [
         { type: "github", url: "https://github.com/cuappdev/eatery-blue-backend" },
         { type: "appstore", url: "https://apps.apple.com/app/id1089672962" }
@@ -125,7 +147,7 @@ const Portfolio = () => {
     {
       name: "snail survival",
       tech: ["javascript", "html", "css", "chrome api"],
-      description: "chrome extension game with 100+ weekly active users across 40+ countries. designed dynamic gameplay and difficulty adjustment.",
+      description: "chrome extension game with 175+ weekly active users across 50+ countries. designed dynamic gameplay and difficulty adjustment.",
       image: "/logos/snail-survival.png",
       gradient: "from-amber-500 to-orange-600",
       highlights: ["100+ players", "40+ countries", "chrome store", "dynamic difficulty", "marketplace"],
@@ -188,6 +210,10 @@ const Portfolio = () => {
         name: "javascript", 
         icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" className="w-5 h-5" alt="JavaScript" /> 
       },
+      {
+        name: "go",
+        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original-wordmark.svg" className="w-5 h-5" alt="Go" />
+      },
       { 
         name: "ocaml", 
         icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ocaml/ocaml-original.svg" className="w-5 h-5" alt="OCaml" /> 
@@ -249,7 +275,14 @@ const Portfolio = () => {
         name: "tensorflow",
         icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" className="w-5 h-5" alt="TensorFlow" />
       },
-      
+      {
+        name: "pytorch",
+        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" className="w-5 h-5" alt="PyTorch" />
+      },
+      {
+        name: "express",
+        icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" className="w-5 h-5" alt="Express" />
+      }
     ]
   };
 
@@ -398,14 +431,12 @@ const Portfolio = () => {
               </div>
               
               <p className="text-gray-600 font-light leading-relaxed">
-                passionate about building scalable, production-grade software that makes a real impact. 
-                from developing apps used by thousands of cornell students to contributing to enterprise financial software, 
-                i love tackling complex technical challenges and creating elegant solutions.
-              </p>
-
-              <p className="text-gray-600 font-light leading-relaxed">
-                currently exploring the intersection of ai and software engineering, 
-                with a focus on creating robust backend systems and scalable architecture.
+                cs student at cornell university in the class of 2027. i love backend development, ai/ml, and solving hard problems :D
+                <br /><br />
+                on campus i build apps for cornell students at cornell appdev and work on a bunch of other projects.
+                <br /><br />
+                interning summer 2026 at google on the vertex ai team and fall 2026 at ramp as a backend software engineering intern.
+                
               </p>
             </div>
 
@@ -550,12 +581,17 @@ const Portfolio = () => {
                 <div className="relative">
                   <div className="flex items-start justify-between mb-6">
                     <div className="flex items-center gap-4">
-                      <img src={exp.logo} alt={exp.company} className="w-12 h-12 rounded-xl shadow-sm" />
+                      <img src={exp.logo} alt={exp.company} className="w-12 h-12 rounded-xl shadow-sm object-contain bg-white p-1" />
                       <div>
                         <h3 className="text-lg font-light text-gray-900">{exp.title}</h3>
                         <p className="text-sm text-gray-500">{exp.company}</p>
                       </div>
                     </div>
+                    {exp.incoming && (
+                      <span className="text-xs px-2 py-1 bg-gradient-to-r from-violet-600 to-indigo-600 text-white rounded-full">
+                        incoming
+                      </span>
+                    )}
                   </div>
                   
                   <p className="text-xs font-light text-gray-400 tracking-wider uppercase mb-4">{exp.period}</p>
@@ -634,7 +670,7 @@ const Portfolio = () => {
       <footer className="py-8 px-6 border-t border-gray-100">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-xs font-light text-gray-400 tracking-wider">
-            © 2025 skye slattery · built with react & tailwind css
+            © 2026 skye slattery · built with react & tailwind css
           </p>
         </div>
       </footer>
