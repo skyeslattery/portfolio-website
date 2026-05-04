@@ -7,7 +7,7 @@ const Portfolio = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [, setHoveredProject] = useState(null);
   const [, setHoveredExp] = useState(null);
-
+  
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -35,7 +35,7 @@ const Portfolio = () => {
       setMobileMenuOpen(false);
     }
   };
-
+  
   const experiences = [
     {
       title: "software engineering intern",
@@ -431,9 +431,9 @@ const Portfolio = () => {
               </div>
               
               <p className="text-gray-600 font-light leading-relaxed">
-                cs student at cornell university in the class of 2027. i love backend development, ai/ml, and solving hard puzzles :D
+                cs student at cornell university in the class of 2027. i love backend development, ai/ml, and solving hard problems :D
                 <br /><br />
-                on campus i build apps for cornell students at cornell appdev and work on a bunch of other projcts.
+                on campus i build apps for cornell students at cornell appdev and work on a bunch of other projects.
                 <br /><br />
                 interning summer 2026 at google on the vertex ai team and fall 2026 at ramp as a backend software engineering intern.
                 
