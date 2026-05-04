@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Github, Mail, MapPin, GraduationCap, ChevronDown, Menu, X, ArrowUpRight, Linkedin } from 'lucide-react';
 
 const Portfolio = () => {
@@ -7,6 +7,86 @@ const Portfolio = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [, setHoveredProject] = useState(null);
   const [, setHoveredExp] = useState(null);
+  
+  // Bouncing profile picture state
+  const [isLoose, setIsLoose] = useState(false);
+  const [ballPos, setBallPos] = useState({ x: 0, y: 0 });
+  const ballRef = useRef(null);
+  const animationRef = useRef(null);
+  const physicsRef = useRef({ x: 0, y: 0, vx: 0, vy: 0 });
+  
+  const startBouncing = useCallback(() => {
+    if (ballRef.current && !isLoose) {
+      const rect = ballRef.current.getBoundingClientRect();
+      physicsRef.current = { 
+        x: rect.left, 
+        y: rect.top, 
+        vx: (Math.random() - 0.5) * 12, 
+        vy: -8 
+      };
+      setBallPos({ x: rect.left, y: rect.top });
+      setIsLoose(true);
+    }
+  }, [isLoose]);
+  
+  useEffect(() => {
+    if (!isLoose) return;
+    
+    const ballSize = 144;
+    const physics = physicsRef.current;
+    
+    const animate = () => {
+      // Gravity
+      physics.vy += 0.4;
+      
+      // Air resistance
+      physics.vx *= 0.995;
+      physics.vy *= 0.995;
+      
+      // Update position
+      physics.x += physics.vx;
+      physics.y += physics.vy;
+      
+      // Wall bounces
+      if (physics.x <= 0) {
+        physics.x = 0;
+        physics.vx *= -0.75;
+      } else if (physics.x >= window.innerWidth - ballSize) {
+        physics.x = window.innerWidth - ballSize;
+        physics.vx *= -0.75;
+      }
+      
+      if (physics.y <= 0) {
+        physics.y = 0;
+        physics.vy *= -0.75;
+      } else if (physics.y >= window.innerHeight - ballSize) {
+        physics.y = window.innerHeight - ballSize;
+        // Dampen small bounces to prevent jitter
+        if (Math.abs(physics.vy) < 3) {
+          physics.vy = 0;
+          physics.vx *= 0.9;
+        } else {
+          physics.vy *= -0.7;
+        }
+      }
+      
+      setBallPos({ x: physics.x, y: physics.y });
+      
+      // Check if settled
+      const speed = Math.sqrt(physics.vx * physics.vx + physics.vy * physics.vy);
+      const onGround = physics.y >= window.innerHeight - ballSize - 1;
+      
+      if (onGround && speed < 0.5) {
+        setTimeout(() => setIsLoose(false), 1000);
+        return;
+      }
+      
+      animationRef.current = requestAnimationFrame(animate);
+    };
+    
+    animationRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationRef.current);
+  }, [isLoose]);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -355,15 +435,37 @@ const Portfolio = () => {
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
           {/* Profile Picture */}
           <div className="mb-8 relative inline-block">
-            <div className="w-40 h-40 md:w-36 md:h-36 rounded-full overflow-hidden border border-gray-200 shadow-2xl bg-gradient-to-br from-violet-400 to-indigo-400 p-0.5">
+            <div 
+              ref={ballRef}
+              onClick={startBouncing}
+              className={`w-36 h-36 rounded-full overflow-hidden border border-gray-200 shadow-2xl bg-gradient-to-br from-violet-400 to-indigo-400 p-0.5 cursor-pointer hover:scale-105 transition-transform ${isLoose ? 'opacity-0' : ''}`}
+            >
               <img 
                 src="profile.jpg" 
                 alt="Profile"
                 className="w-full h-full rounded-full object-cover bg-white"
               />
             </div>
-            <div className="absolute -bottom-1 -right-1 w-9 h-9 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full border-4 border-white"></div>
+            {!isLoose && <div className="absolute -bottom-1 -right-1 w-9 h-9 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full border-4 border-white"></div>}
           </div>
+          
+          {/* Bouncing profile picture */}
+          {isLoose && (
+            <div 
+              className="fixed z-50 w-36 h-36 rounded-full overflow-hidden border border-gray-200 shadow-2xl bg-gradient-to-br from-violet-400 to-indigo-400 p-0.5 pointer-events-none"
+              style={{ 
+                left: ballPos.x, 
+                top: ballPos.y,
+                transform: `rotate(${physicsRef.current.vx * 3}deg)`
+              }}
+            >
+              <img 
+                src="profile.jpg" 
+                alt="Profile"
+                className="w-full h-full rounded-full object-cover bg-white"
+              />
+            </div>
+          )}
           
           <h1 className="text-4xl md:text-5xl font-extralight tracking-tight mb-4 text-gray-900">
             skye slattery
