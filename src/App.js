@@ -119,25 +119,27 @@ const Portfolio = () => {
   const experiences = [
     {
       title: "software engineering intern",
-      company: "google",
-      period: "may 2026 - aug 2026",
-      description: [
-        "incoming summer 2026 on vertex ai"
-      ],
-      logo: "/logos/google.png",
-      color: "from-blue-500 to-green-500",
-      incoming: true
-    },
-    {
-      title: "software engineering intern",
       company: "ramp",
-      period: "aug 2026 - nov 2026",
+      period: "aug 2026 - present",
       description: [
-        "incoming fall 2026 backend"
+        "backend",
+        "financial products (banking) team"
       ],
       logo: "/logos/ramp.png",
       color: "from-amber-500 to-yellow-500",
-      incoming: true
+      current: true
+    },
+    {
+      title: "software engineering intern",
+      company: "google",
+      period: "may 2026 - aug 2026",
+      description: [
+        "wrote 10k+ loc to prod across scheduling and backend systems",
+        "built an agent to safely automate an oncall workflow",
+        "optimized a hot path with snapshot reads to reduce contention and improve latency 4x"
+      ],
+      logo: "/logos/google.png",
+      color: "from-blue-500 to-green-500"
     },
     {
       title: "software engineering intern",
@@ -438,7 +440,7 @@ const Portfolio = () => {
             <div 
               ref={ballRef}
               onClick={startBouncing}
-              className={`w-36 h-36 rounded-full overflow-hidden border border-gray-200 shadow-2xl bg-gradient-to-br from-violet-400 to-indigo-400 p-0.5 cursor-pointer hover:scale-105 transition-transform ${isLoose ? 'opacity-0' : ''}`}
+              className={`w-40 h-40 rounded-full overflow-hidden border border-gray-200 shadow-2xl bg-gradient-to-br from-violet-400 to-indigo-400 p-0.5 cursor-pointer hover:scale-105 transition-transform ${isLoose ? 'opacity-0' : ''}`}
             >
               <img 
                 src="profile.jpg" 
@@ -452,7 +454,7 @@ const Portfolio = () => {
           {/* Bouncing profile picture */}
           {isLoose && (
             <div 
-              className="fixed z-50 w-36 h-36 rounded-full overflow-hidden border border-gray-200 shadow-2xl bg-gradient-to-br from-violet-400 to-indigo-400 p-0.5 pointer-events-none"
+              className="fixed z-50 w-40 h-40 rounded-full overflow-hidden border border-gray-200 shadow-2xl bg-gradient-to-br from-violet-400 to-indigo-400 p-0.5 pointer-events-none"
               style={{ 
                 left: ballPos.x, 
                 top: ballPos.y,
@@ -473,7 +475,7 @@ const Portfolio = () => {
           
           <p className="text-lg md:text-xl font-light tracking-wide mb-8">
             <span className="text-gray-500 animate-glow">
-              software developer · backend systems · ai/ml
+              software engineer · backend systems · ai/ml
             </span>
           </p>
           
@@ -537,7 +539,7 @@ const Portfolio = () => {
                 <br /><br />
                 on campus i build apps for cornell students at cornell appdev and work on a bunch of other projects.
                 <br /><br />
-                interning summer 2026 at google on the vertex ai team and fall 2026 at ramp as a backend software engineering intern.
+                interned summer 2026 at google on the vertex ai team and fall 2026 at ramp as a backend software engineering intern.
                 
               </p>
             </div>
@@ -689,9 +691,9 @@ const Portfolio = () => {
                         <p className="text-sm text-gray-500">{exp.company}</p>
                       </div>
                     </div>
-                    {exp.incoming && (
+                    {exp.current && (
                       <span className="text-xs px-2 py-1 bg-gradient-to-r from-violet-600 to-indigo-600 text-white rounded-full">
-                        incoming
+                        current
                       </span>
                     )}
                   </div>
